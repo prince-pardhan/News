@@ -22,7 +22,7 @@ import {
 import { IconPhoto, IconSend } from "@tabler/icons-react";
 
 function Tiptap() {
-  const fileInputRef = useRef(null);
+  const fileInputRef = useRef<any>(null);
 
   const editor = useEditor({
     extensions: [
@@ -40,19 +40,23 @@ function Tiptap() {
     immediatelyRender: false,
   });
 
+  if(!editor){
+    return null
+  }
+
   const openGallery = () => {
     fileInputRef.current.click();
   };
 
-  const handleImageUpload = (e) => {
+  const handleImageUpload = (e:any) => {
     const file = e.target.files[0];
     if (!file) return;
 
     const reader = new FileReader();
-    reader.onload = () => {
-      editor.chain().focus().setImage({ src: reader.result }).run();
-    };
-    reader.readAsDataURL(file);
+    // reader.onload = () => {
+    //   editor.chain().focus().setImage({ src: reader.result }).run();
+    // };
+    // reader.readAsDataURL(file);
   };
 
   return (
