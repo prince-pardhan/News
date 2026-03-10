@@ -20,7 +20,7 @@ export default function Navbar() {
           <Image
             src="/rr.png"
             h="200vh"
-            w={120}
+            w={120} 
             fit="contain"
             
           />
